@@ -12,7 +12,11 @@ if [[ "$#" -ne "1" ]]; then
   exit 1
 fi
 
+echo "Copying from ~/.BurpSuite .."
 cp -rf ~/.BurpSuite .
+echo "git add'ing .."
 git add .
+echo "Committing .."
 git commit -m "$1"
+echo "Pushing .."
 git push
