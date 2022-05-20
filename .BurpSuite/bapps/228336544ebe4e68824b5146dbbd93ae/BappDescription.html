@@ -1,0 +1,32 @@
+<p>This extension gives Burp Suite the ability to find Java deserialization vulnerabilities.</p>
+
+<p>It adds checks to both the active and passive scanner and can also be used in an "Intruder like" manual mode, with a dedicated tab.</p>
+
+<p>The extension allows the user to <i>discover and exploit</i> Java Deserialization Vulnerabilities with different encodings (Raw, Base64, Ascii Hex, GZIP, Base64 GZIP) when the following libraries are loaded in the target JVM:</p>
+
+<ul>
+	<li>Apache Commons Collections 3 (up to 3.2.1), with five different chains</li>
+	<li>Apache Commons Collections 4 (up to 4.4.0), with two different chains</li>
+	<li>Spring (up to 4.2.2)</li>
+	<li>Java 6 and Java 7 (up to Jdk7u21) without any weak library</li>
+	<li>Hibernate 5</li>
+	<li>JSON</li>
+	<li>Rome</li>
+	<li>Java 8 (up to Jdk8u20) without any weak library</li>
+	<li>Apache Commons BeanUtils</li>
+	<li>Javassist/Weld</li>
+	<li>JBoss Interceptors</li>
+	<li>Mozilla Rhino (two different chains)</li>
+	<li>Vaadin</li>
+</ul>
+
+<p>Furthermore, URLSNDS payload has been introduced to actively detect Java
+deserialization on the backend without any vulnerable library. This check
+does the same job as the CPU attack vector already present in the &quot;Manual
+testing&quot; section but can be safely added to the Burp Suite Active Scanner
+engine, while the CPU payload should be use with caution.</p>
+
+<p>After that a Java deserialization vulnerability has been found, a dedicated exploitation tab offers a comfortable interface to exploit deserialization vulnerabilities using frohoff ysoserial <a href="https://github.com/frohoff/ysoserial">https://github.com/frohoff/ysoserial</a></p>
+
+<p>Mini walkthrough: <a href="https://techblog.mediaservice.net/2017/05/reliable-discovery-and-exploitation-of-java-deserialization-vulnerabilities/">https://techblog.mediaservice.net/2017/05/reliable-discovery-and-exploitation-of-java-deserialization-vulnerabilities/</a></p>
+

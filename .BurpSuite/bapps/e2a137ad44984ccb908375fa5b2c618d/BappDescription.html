@@ -1,0 +1,26 @@
+<p>This extension beautifies .NET requests to make the body parameters more 
+human readable. Built-in parameters like __VIEWSTATE have their values masked. 
+Form field names have the auto-generated part of their name removed.</p>
+<p>Requests are only beautified in contexts where they can be edited, such as 
+the Proxy intercept view.</p>
+<p>For example, a .NET request with the following body:</p>
+
+<pre>
+__VIEWSTATE=%2oiAIHfiohsdoigjKLASgjghajklgjSDGsjdglSDJg9SDJGsdgjSGJDDSasdfja9sdjfasdfja0sdfja
+... [1000 lines later] ...
+&ctl00%24ctl00%24InnerContentPlaceHolder%24Element_42%24ctl00%24FrmLogin%24TxtUsername_intern
+al=username&ctl00%24ctl00%24InnerContentPlaceHolder%24Element_42%24ctl00%24FrmLogin%24TxtPass
+word_internal=password&ctl00%24ctl00%24InnerContentPlaceHolder%24Element_42%24ctl00%24BtnLogi
+n=Login
+</pre>
+
+<p>will be displayed like this:</p>
+
+<pre>
+__VIEWSTATE=<snipped out for sanity>&TxtUsername_internal=username&TxtPassword_internal=password&BtnLogin=Login
+</pre>
+
+<p>This is done without compromising the integrity of the underlying message so you can 
+edit parameter values and the request will be correctly reconstructed. You can 
+also send the beautified messages to other Burp tools, and they will be handled 
+correctly.</p>

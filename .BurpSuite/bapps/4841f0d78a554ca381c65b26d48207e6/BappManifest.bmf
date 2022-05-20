@@ -1,0 +1,12 @@
+Uuid: 4841f0d78a554ca381c65b26d48207e6
+ExtensionType: 1
+Name: GraphQL Raider
+RepoName: graphql-raider
+ScreenVersion: 1.0.0-17
+SerialVersion: 1
+MinPlatformVersion: 0
+ProOnly: True
+Author: Dennis Kniep
+ShortDescription: Test endpoints implementing GraphQL
+EntryPoint: target/gql-jar-with-dependencies.jar
+BuildCommand: mvn package -DskipTests=true -Dmaven.javadoc.skip=true -B

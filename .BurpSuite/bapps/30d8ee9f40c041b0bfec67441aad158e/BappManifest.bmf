@@ -1,0 +1,13 @@
+Uuid: 30d8ee9f40c041b0bfec67441aad158e
+ExtensionType: 2
+Name: AuthMatrix
+RepoName: auth-matrix
+ScreenVersion: 0.8.2
+SerialVersion: 12
+MinPlatformVersion: 0
+ProOnly: False
+Author: Mick Ayzenberg, Security Innovation
+ShortDescription: Provides a simple way to test authorization in web applications and web services.
+EntryPoint: AuthMatrix.py
+BuildCommand: 
+SupportedProducts: Pro, Community

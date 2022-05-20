@@ -1,0 +1,12 @@
+Uuid: ea1aa264b86d424ba35760d7e24c9e60
+ExtensionType: 1
+Name: SameSite Reporter
+RepoName: samesite-reporter
+ScreenVersion: 1.0
+SerialVersion: 2
+MinPlatformVersion: 0
+ProOnly: True
+Author: Louis Dion-Marcil
+ShortDescription: Passively reports various SameSite flags
+EntryPoint: build/libs/SameSiteReporter-all.jar
+BuildCommand: gradle fatJar

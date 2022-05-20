@@ -1,0 +1,11 @@
+Uuid: a158fd3fc9394253be3aa0bc4c181d1f
+ExtensionType: 2
+Name: Additional Scanner Checks
+RepoName: additional-scanner-checks
+ScreenVersion: 1.4
+SerialVersion: 6
+MinPlatformVersion: 0
+ProOnly: True
+Author: Thomas Patzke
+ShortDescription: Provides some additional passive Scanner checks.
+EntryPoint: Burp-MissingScannerChecks.py

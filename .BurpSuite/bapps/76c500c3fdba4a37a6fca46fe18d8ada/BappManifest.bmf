@@ -1,0 +1,11 @@
+Uuid: 76c500c3fdba4a37a6fca46fe18d8ada
+ExtensionType: 2
+Name: Cookie Decrypter
+RepoName: cookie-decrypter
+ScreenVersion: 1.0
+SerialVersion: 1
+MinPlatformVersion: 0
+ProOnly: True
+Author: Solomon Sklash
+ShortDescription: Decrypts/decodes various types of cookies.
+EntryPoint: cookie-decrypter.py

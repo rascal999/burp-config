@@ -1,0 +1,172 @@
+v0.8 - 11/26/2018
+
+STATE FILE COMPATIBILITY - v0.5.2 and greater
+
+* Major release containing several updates.
+
+* AuthMatrix Tab will now highlight when a request is sent to it from another tab.
+
+* Chains, Messages, and Users can now all be disabled using a right click menu option.
+
+* Color scheme has been updated to reflect Burp's new palette.
+
+* Users can now be Reordered via drag-and-drop.  This affects which order the requests are run. (Useful for DELETE requests)
+
+* AuthMatrix now checks for chains with message dependencies and will now run requests in the correct order to satisfy those dependencies.
+
+* State File loading has been simplified to be more permissive of missing elements.  Additionally, users can now load "partial states" containing only certain table data in order to update just those tables. More information describing the expected JSON structure linked in the README.
+
+* Success Regexes are now a dropdown box containing all previous regexes for fast switching
+
+* New right click menu when selecting multiple requests that allows for updating Success Regexes for all at once.
+
+* Chain Transformers: new column in chains allowing encoding of input date before it is used in a request.  Current encodings supported include base64, url, hex, and several hashing functions.
+
+* Various UI updates
+
+* Bug Fixes
+
+v0.7.1 - 11/21/2017
+
+STATE FILE COMPATIBILITY - v0.5.2 and greater
+
+* Bug Fix - Issue in chain regex logic when grabbing the last HTTP Header before the body
+
+* Bug Fix - Issue with saving state returning a file of size zero if the state included any time'd out requests
+
+* Minor UI Changes
+
+v0.7 - 04/24/2017
+
+STATE FILE COMPATIBILITY - v0.5.2 and greater
+
+* Single-user Roles - Automatic roles made for each new user.  Will be useful for horizontal (cross-user) auth testing.
+
+* Deprecated Post Arg field in User Table - same functionality can be accomplished with Chains
+
+* Support multiple Header fields in User Table (default changed to 0)
+
+* Added Chain Sources - configurable strings per-user that can be used as the source of a chain. 
+
+* Removed most data for deleted items from the state file
+
+* Infer default Response Regex from the Response Code if available
+
+* Changed Chains Table to use dropdowns when possible
+
+* Various UI Changes and Bug Fixes
+
+v0.6.3 - 04/15/2017
+
+STATE FILE COMPATIBILITY - v0.5.2 and greater
+
+* Updated Serialization format to JSON.  Loading legacy state files is still supported for now, however, all new state files will be saved to the new format. Additionally, the results of a run are now exported as well in the RunResultForRoleID field of the saved json state. 
+
+NOTE: For RunResultForRoleID in the JSON state file, the key of the array matches the RoleID and the value is a boolean indicating true (green) or false (red or blue).
+
+* New right-click context options for sending cookies to users. Sends both current cookies and cookies set in the message's reponse.
+
+* Fixed bug in chaining where content-length wouldn't update appropriately
+
+* Added randomness generation.  Set the string #{AUTHMATRIX:RANDOM} anywhere in the original message's header or body and the run will replace it with a random 4 char numeric string. Most common use case is for APIs that reject requests that are identical to a previous request.
+
+v0.6.2 - 10/31/2016
+
+STATE FILE COMPATIBILITY - v0.5.2 and greater
+
+* Fixed a bug when sending a result RequestResponse to another area of Burp, such as Repeater
+
+* Add "Cancel" button to end runs early
+
+* Increase default run timeout
+
+* Updated UI: Add HTTP verb to default request name, Allow shrinking of unused columns in User Table, Improved locking UI during a run
+
+v0.6.1 - 10/13/2016
+
+STATE FILE COMPATIBILITY - v0.5.2 and greater
+
+* Bug fix with Failure Regex - Image in README now shows correct usage example
+
+v0.6.0 - MAJOR UPDATE - 10/11/2016
+
+STATE FILE COMPATIBILITY - v0.5.2 and greater
+
+* Chains:
+ - New advanced configuration table for chaining several messages together
+ - Can be used for Advanced CSRF Token handling or propagating IDs/GUIDs to later messages
+ - See README for instructions and examples
+
+* Added Drag-and-Drop Reorder for Requests in Message Table:
+ - Required to support Chains
+
+* New Columns in User and Message Table:
+ - Separate columns for cookies, headers, and POST args for clarity
+ - Supports use-case where user requires both a header and cookies
+ - Both tables now use index identifier instead of row number
+
+* Update Color Scheme:
+ - Blue for False Positive and purple for Failure Regex
+ - Colored highlighting of selected rows
+
+* Allow Editing base requests from AuthMatrix
+ - Only works when the message has been altered with a keyboard (i.e. not "Change request method" or "Change body encoding")
+ - https://support.portswigger.net/customer/en/portal/questions/16705314-imessageeditor-ismessagemodified-does-not-detect-modification
+
+* Change Target Domain:
+ - You can now right click selected messages and change the target domain/port/tls configuration
+
+* Bug Fixes:
+ - no longer sends each base request on Load State
+ - correctly times out during Run when host is unreachable
+ - handle empty session tokens correctly
+ - check if the HTTP Response is empty in checkResults() and handle appropriately 
+ - run messages in order by row number, not by index
+ - when deleting items, decrement row if the row is affected by the change, not the index
+
+
+v0.5.4 - 09/26/2016
+
+STATE FILE COMPATIBILITY - v0.5.2 and greater
+
+* Added support for Failure Regexes (i.e. if anonymous role is checked and it sees an HTTP 200 regex, flag it)
+
+* Bug fix: Fixed issue when session token is left blank
+
+* A more appealing color scheme
+
+v0.5.3 - 06/29/2016
+
+STATE FILE COMPATIBILITY - v0.5.2 and greater
+
+* Modify color coding of results to be nicer colors and include orange for false positives/config errors.  Orange will generally imply that the session token is invalid or the success regex is incorrect.
+
+* Update readme images and describe orange color
+
+v0.5.2 - 04/13/2016
+
+STATE FILE COMPATIBILITY - v0.5.2 and greater
+
+* MAJOR BUG FIX: Issue when adding new roles after messages have already been sent to AuthMatrix.  Could lead to invalid results and incorrect UI display of the Message table's checkboxes. Invalidates some previous saved states.  
+* Re-enabled "Send from Target Map Tree" when the selected messages all have responses
+* Refactored runMessage code and added support for multiple cookies in the session tokens
+
+v0.5.1 - 03/21/2016
+
+STATE FILE COMPATIBILITY - v0.4 and greater
+
+* Small Bug Fix: replace .append with .add on Java ArrayList types. Not sure why .append ever worked on certain systems to begin with...
+
+v0.5 - 02/23/2016
+
+STATE FILE COMPATIBILITY - v0.4 and greater
+
+* FEATURE: Changing host domains on load when they are unaccessible 
+* Cleaned up variable names 
+* Removed "Send to AuthMatrix" for Target Trees due to bugginess
+* Removed unused libraries from code
+* Add confirmation for Clear
+* Changed load timeout to 3.0 seconds
+
+
+

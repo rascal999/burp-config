@@ -1,0 +1,11 @@
+Uuid: e2a137ad44984ccb908375fa5b2c618d
+ExtensionType: 1
+Name: .NET Beautifier
+ScreenVersion: 0.3
+SerialVersion: 3
+MinPlatformVersion: 0
+ProOnly: false
+Author: Nadeem Douba
+ShortDescription: Masks verbose parameter details in .NET requests.
+EntryPoint: build/libs/dotnet-beautifier-all.jar
+BuildCommand: gradle fatJar
